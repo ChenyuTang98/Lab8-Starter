@@ -47,17 +47,17 @@ function initializeServiceWorker() {
 // B1. TODO - Check if 'serviceWorker' is supported in the current browser
 if ("serviceworker" in navigator){
 // B2. TODO - Listen for the 'load' event on the window object.
-if (!('serviceWorker' in navigator)) {
-  return;
-}
-window.addEventListener('load', async () => {
-  try {
-    const registration = await navigator.serviceWorker.register('./sw.js');
-    console.log('ServiceWorker registration successful', registration.scope);
-  } catch (error) {
-    console.error('ServiceWorker registration failed: ', error);
+  if (!('serviceWorker' in navigator)) {
+    return;
   }
-});
+  window.addEventListener('load', async () => {
+    try {
+      const registration = await navigator.serviceWorker.register('./sw.js');
+      console.log('ServiceWorker registration successful', registration.scope);
+    } catch (error) {
+      console.error('ServiceWorker registration failed: ', error);
+    }
+  });
 }
 // Steps B3-B6 will be *inside* the event listener's function created in B2
 // B3. TODO - Register './sw.js' as a service worker (The MDN article
